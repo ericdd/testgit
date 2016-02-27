@@ -1,0 +1,39 @@
+
+如果你是第一次想把github上面的项目克隆到本地或者要克隆别人的项目到地。
+$ git clone git@github.com:defnngj/hibernate-demo.git  //在git下面切换到想存放此项目的文件目录下，运行这条命令就可以将项目克隆下来。
+假如本地已经存在了这个项目，而仓库中又有一新的更新，如何把更的合并到本地的项目中？
+$ git fetch origin    //取得远程更新，这里可以看做是准备要取了
+$ git merge origin/master  //把更新的内容合并到本地分支/master
+
+假如远程仓库中已经存了aaa这个文件，我fetch了下来，并删除了aaa这个文件，想再push上到远程仓库中，并使远程仓库中的项目被新的修改覆盖（也是是远程仓库中的aaa也被删除）
+$ git status   //可以看到我们删除的哪些文件
+$ git add .   //删除之后的文件提交git管理。
+$ git rm   src/com/hzh/hibernate/dao/aaa.java    //移除我们删除的那个文件，不然git不允许我们往远程仓库提交。
+Ps: 如果你想删除的是某个目录（java包），这里想移除整个目录的内容。
+$ git rm  src/com/hzh/hibernate/bbb/ -r   // -r 会把bbb/目录下的所有内容一次性移动。
+
+
+http://rogerdudler.github.io/git-guide/index.zh.html
+
+git reflog				用来记录你的每一次命令
+git diff HEAD -- readme.txt   查看工作区和版本库里面最新版本的区别
+git checkout -- readme.txt	把readme.txt文件在工作区的修改全部撤销
+git reset HEAD readme.txt	git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。
+
+从远程库克隆？
+git clone https://github.com/ercidd/testgit2
+
+git checkout 命令加上 –b参数表示创建并切换
+git checkout -b dev
+git branch查看分支，会列出所有的分支，当前分支前面会添加一个星号。
+
+git checkout master	 切换到主分支master上
+git merge dev		 合并dev分支上的内容到当前分支上了，比如master分支上
+
+
+推送分支就是把该分支上所有本地提交到远程库中，推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：远程库的默认名称是origin
+使用命令 git push origin master
+
+
+http://www.cnblogs.com/hutaoer/archive/2013/05/07/git_checkout.html
+
